@@ -58,3 +58,7 @@ input{
 .success {
     display: none;
 }
+
+.contact-button{
+    border: solid 2px;
+}
