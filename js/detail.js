@@ -1,6 +1,6 @@
 const url = "https://datausa.io/api/data?drilldowns=Nation&measures=Population"
 
-const resultsContainer = document.querySelector(".numbers")
+const resultsContainer2 = document.querySelector(".singleDetail")
 
 async function getUsaData() {
 
@@ -11,23 +11,26 @@ async function getUsaData() {
 
         const usa = responseData.data;
         
-        resultsContainer.innerHTML = "";
+        resultsContainer2.innerHTML = "";
 
         for(let i = 0; i < usa.length; i++){
             console.log(usa[i].Nation +" "+usa[i].Year +" "+ usa[i].Population)
             
-            resultsContainer.innerHTML += `<div class="stats">
+            resultsContainer2.innerHTML += `<div class="stats">
                                         <p>${usa[i].Nation}</p>
                                         <p><strong>Year:</Strong>${usa[i].Year}</p>
                                         <p><strong>Population:</strong>${usa[i].Population}</p>
-                                        <a href="details.html">Details</a>
                                         </div>`;
+
+            if (i < 1){
+                break
+            }
         }
     }
     
     catch (error) {
         console.log(error)
-        resultsContainer.innerHTML = displayError()
+        resultsContainer2.innerHTML = displayError()
     }
 
 }
